@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: toktik-frontend-deployment
+  name: toktik-frontend-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: toktik-frontend-deployment
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: toktik-frontend-deployment
+    spec:
+      containers:
+      - image: toktik-frontend:latest
+        imagePullPolicy: IfNotPresent
+        name: toktik-frontend
+        ports:
+        - containerPort: 80
+        resources: {}
+status: {}

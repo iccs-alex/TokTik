@@ -1,0 +1,42 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: mariadb-deployment
+  name: mariadb-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mariadb-deployment
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: mariadb-deployment
+    spec:
+      containers:
+      - image: mariadb:latest
+        name: mariadb
+        env:
+        - name: "MYSQL_DATABASE"
+          value: "mariadb"
+        - name: "MYSQL_USER"
+          value: "dev"
+        - name: "MYSQL_PASSWORD"
+          value: "devpass"
+        - name: "MYSQL_ROOT_PASSWORD"
+          value: "devpass"
+        volumeMounts:
+        - name: mariadb-pv
+          mountPath: /var/lib/mysql
+        ports:
+        - containerPort: 3306
+        resources: {}
+      volumes:
+      - name: mariadb-pv
+        persistentVolumeClaim:
+          claimName: mariadb-pv-claim
+status: {}

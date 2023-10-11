@@ -1,0 +1,42 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: toktik-backend-deployment
+  name: toktik-backend-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: toktik-backend-deployment
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: toktik-backend-deployment
+    spec:
+      containers:
+      - image: toktik-backend
+        imagePullPolicy: IfNotPresent
+        name: toktik-backend
+        env:
+        - name: "MARIA_DB_NAME"
+          value: "mariadb"
+        - name: "MARIA_DB_USERNAME"
+          value: "root"
+        - name: "MARIA_DB_PASSWORD"
+          value: "devpass"
+        - name: "MARIA_DB_PORT"
+          value: "3306"
+        - name: "MARIA_DB_IP"
+          value: "mariadb-service.default.svc.cluster.local"
+        - name: "REDIS_HOST"
+          value: "redis-service.default.svc.cluster.local"
+        - name: "REDIS_PORT"
+          value: "6379"
+        ports:
+        - containerPort: 8080
+        resources: {}
+status: {}
