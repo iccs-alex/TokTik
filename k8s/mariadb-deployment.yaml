@@ -21,13 +21,13 @@ spec:
       - image: mariadb:latest
         name: mariadb
         env:
-        - name: "MYSQL_DATABASE"
+        - name: MYSQL_DATABASE
           value: "mariadb"
-        - name: "MYSQL_USER"
+        - name: MYSQL_USER
           value: "dev"
-        - name: "MYSQL_PASSWORD"
+        - name: MYSQL_PASSWORD
           value: "devpass"
-        - name: "MYSQL_ROOT_PASSWORD"
+        - name: MYSQL_ROOT_PASSWORD
           value: "devpass"
         volumeMounts:
         - name: mariadb-pv

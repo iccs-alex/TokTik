@@ -22,19 +22,19 @@ spec:
         imagePullPolicy: IfNotPresent
         name: toktik-backend
         env:
-        - name: "MARIA_DB_NAME"
+        - name: MARIA_DB_NAME
           value: "mariadb"
-        - name: "MARIA_DB_USERNAME"
-          value: "root"
-        - name: "MARIA_DB_PASSWORD"
+        - name: MARIA_DB_USERNAME
+          value: "dev"
+        - name: MARIA_DB_PASSWORD
           value: "devpass"
-        - name: "MARIA_DB_PORT"
+        - name: MARIA_DB_PORT
           value: "3306"
-        - name: "MARIA_DB_IP"
-          value: "mariadb-service.default.svc.cluster.local"
-        - name: "REDIS_HOST"
-          value: "redis-service.default.svc.cluster.local"
-        - name: "REDIS_PORT"
+        - name: MARIA_DB_IP
+          value: "mariadb-service"
+        - name: REDIS_HOST
+          value: "redis-service"
+        - name: REDIS_PORT
           value: "6379"
         ports:
         - containerPort: 8080
