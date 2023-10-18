@@ -18,8 +18,8 @@ spec:
         app: toktik-frontend-deployment
     spec:
       containers:
-      - image: toktik-frontend:latest
-        imagePullPolicy: IfNotPresent
+      - image: toktik-frontend:v1
+        imagePullPolicy: Never
         name: toktik-frontend
         ports:
         - containerPort: 80
