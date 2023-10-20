@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: toktik-thumbnail-deployment
+  name: toktik-thumbnail-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: toktik-thumbnail-deployment
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: toktik-thumbnail-deployment
+    spec:
+      containers:
+      - image: toktik-thumbnail:v1
+        imagePullPolicy: Never
+        name: toktik-thumbnail
+        ports:
+        - containerPort: 5002
+        resources: {}
+status: {}

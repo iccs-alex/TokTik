@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: toktik-processing-deployment
+  name: toktik-processing-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: toktik-processing-deployment
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: toktik-processing-deployment
+    spec:
+      containers:
+      - image: toktik-processing:v1
+        imagePullPolicy: Never
+        name: toktik-processing
+        ports:
+        - containerPort: 5001
+        resources: {}
+status: {}
