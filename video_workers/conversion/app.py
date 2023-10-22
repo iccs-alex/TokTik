@@ -27,14 +27,15 @@ def process_message(redisDB, message_json: str):
     print(f"Message received: id={message['id']}, message={message}.")
 
 
-def main():
-    print("HELLOOOOOO")
+try:
     redisDB = redis_db()
-    print("Redis created")
-    # while True:
-    message_json = redis_queue_pop(redisDB)
-    # process_message(redisDB, message_json)
-
-
-if __name__ == '__main__':
-    main()
+    pubsub = redisDB.pubsub()
+    pubsub.subscribe("convert")
+    messages = []
+    for message in pubsub.listen():
+        messages.append(message)
+        channel = message['channel']
+        data = message['data']
+        print("Message data: " + str(data))
+except Exception as e:
+    print(f"An error occured: {e}")
