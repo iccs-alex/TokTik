@@ -6,5 +6,6 @@ WORKDIR /app
 RUN pip install -r requirements.txt
 
 EXPOSE 5000
+ENV PYTHONUNBUFFERED=true
 
-CMD [ "flask", "--app", "app", "run" ]
+CMD [ "python", "./app.py" ]

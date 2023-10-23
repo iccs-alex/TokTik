@@ -1,7 +1,9 @@
 import redis
 import config
 from json import loads
-
+from convert import convert_to_mp4
+from s3 import getVideo, putVideo
+import io
 
 def redis_db():
     redisDB = redis.Redis(host=config.REDIS_HOST,
@@ -17,7 +19,6 @@ def redis_queue_push(redisDB, message):
 
 
 def redis_queue_pop(redisDB):
-    print("ADASDASDASDASDASD")
     _, message_json = redisDB.brpop(config.REDIS_QUEUE_NAME)
     return message_json
 
@@ -27,15 +28,25 @@ def process_message(redisDB, message_json: str):
     print(f"Message received: id={message['id']}, message={message}.")
 
 
-try:
+def main():
     redisDB = redis_db()
     pubsub = redisDB.pubsub()
     pubsub.subscribe("convert")
     messages = []
     for message in pubsub.listen():
-        messages.append(message)
         channel = message['channel']
         data = message['data']
+        if type(data) is not str:
+            print("Invalid data type: " + str(type(data)))
+            continue
+        messages.append(message)
         print("Message data: " + str(data))
-except Exception as e:
-    print(f"An error occured: {e}")
+        videoFile = getVideo(data)
+        videoBytes = videoFile["Body"].read()
+
+        videoMp4 = convert_to_mp4(videoBytes)
+        putVideo("test", videoMp4)
+
+
+if __name__ == "__main__":
+    main()

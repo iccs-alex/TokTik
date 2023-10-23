@@ -24,4 +24,15 @@ spec:
         ports:
         - containerPort: 5002
         resources: {}
+        env:
+        - name: AWS_ACCESS_KEY_ID
+          valueFrom:
+            secretKeyRef:
+              name: s3-key-id
+              key: s3-key-id
+        - name: AWS_ACCESS_KEY_SECRET
+          valueFrom:
+            secretKeyRef:
+              name: s3-key-secret
+              key: s3-key-secret
 status: {}

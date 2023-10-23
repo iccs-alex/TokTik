@@ -3,6 +3,10 @@ kind: Ingress
 metadata:
   name: toktik-ingress
   namespace: default
+  annotations:
+    traefik.ingress.kubernetes.io/frontend-entry-points: http, https
+    ingress.kubernetes.io/protocol: http
+    traefik.ingress.kubernetes.io/rule-type: PathPrefixStrip
 spec:
   rules:
     - http:
