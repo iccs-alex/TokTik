@@ -16,5 +16,5 @@ def getVideo(videoKey: str):
 
 
 def putVideo(videoKey, videoMp4):
-    response = s3Client.put_object(Body=videoMp4, Bucket='toktik-videos', Key=f'mp4/{videoKey}')
+    response = s3Client.put_object(Body=videoMp4, Bucket='toktik-videos', Key='mp4/videoKey')
     return response

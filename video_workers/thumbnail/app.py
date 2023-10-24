@@ -1,7 +1,9 @@
 import redis
 import config
+import thumbnail
 from json import loads
-
+from s3 import getVideo, putVideo
+import io
 
 def redis_db():
     redisDB = redis.Redis(host=config.REDIS_HOST,
@@ -13,11 +15,10 @@ def redis_db():
 
 
 def redis_queue_push(redisDB, message):
-    redisDB.lpush(config.REDIS_QUEUE_NAME, message)
+    redisDB.publish(config.REDIS_QUEUE_NAME, message)
 
 
 def redis_queue_pop(redisDB):
-    print("ADASDASDASDASDASD")
     _, message_json = redisDB.brpop(config.REDIS_QUEUE_NAME)
     return message_json
 
@@ -27,15 +28,23 @@ def process_message(redisDB, message_json: str):
     print(f"Message received: id={message['id']}, message={message}.")
 
 
-try:
+def main():
     redisDB = redis_db()
     pubsub = redisDB.pubsub()
-    pubsub.subscribe("convert")
-    messages = []
+    pubsub.subscribe(config.REDIS_LISTEN_QUEUE_NAME)
     for message in pubsub.listen():
-        messages.append(message)
         channel = message['channel']
         data = message['data']
+        if type(data) is not str:
+            print("Invalid data type: " + str(type(data)))
+            continue
         print("Message data: " + str(data))
-except Exception as e:
-    print(f"An error occured: {e}")
+        videoFile = getVideo(data)
+        videoBytes = videoFile["Body"].read()
+        thumbnailFile = thumbnail.retrieve_thumbnail(videoBytes)
+        putVideo(data, thumbnailFile)
+        print("Message processed")
+
+
+if __name__ == "__main__":
+    main()
