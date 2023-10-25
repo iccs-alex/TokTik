@@ -43,6 +43,7 @@ def main():
         videoBytes = videoFile["Body"].read()
         thumbnailBytes = thumbnail.retrieve_thumbnail(videoBytes)
         putVideo(data, thumbnailBytes)
+        redisDB.publish(config.REDIS_PUSH_QUEUE_NAME, data)
         print("Message processed")
 
 
