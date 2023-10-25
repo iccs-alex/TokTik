@@ -26,7 +26,10 @@ def retrieve_thumbnail(video_bytes):
     # Run FFmpeg to generate the thumbnail
     ffmpeg.run(thumbnail_filter, overwrite_output=True)
     os.remove(input_temp_file_name)
+
+    with open(output_temp_file_name, "rb") as output_temp_file:
+        thumbnail_bytes = output_temp_file.read()
     print("Got thumbnail")
-    return output_temp_file_name
+    return thumbnail_bytes
 
 

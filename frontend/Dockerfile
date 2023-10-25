@@ -3,8 +3,8 @@ FROM node:16 as build
 RUN mkdir /app
 WORKDIR /app
 COPY ./codebase .
-RUN npm install --legacy-peer-deps
-RUN yarn build
+RUN yarn
+RUN yarn run build
 
 # Production stage
 FROM nginx:1.21-alpine

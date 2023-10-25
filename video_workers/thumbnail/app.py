@@ -41,8 +41,8 @@ def main():
         print("Message data: " + str(data))
         videoFile = getVideo(data)
         videoBytes = videoFile["Body"].read()
-        thumbnailFile = thumbnail.retrieve_thumbnail(videoBytes)
-        putVideo(data, thumbnailFile)
+        thumbnailBytes = thumbnail.retrieve_thumbnail(videoBytes)
+        putVideo(data, thumbnailBytes)
         print("Message processed")
 
 
