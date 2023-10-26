@@ -40,18 +40,18 @@ def main():
         videoFile = s3.getVideo(data)
         videoBytes = videoFile["Body"].read()
         (videoChunks, output_folder) = process_mp4(videoBytes, 10)
-        print("Processed video")
+        print("Video chunks generated")
         # Upload chunks and linker file to S3
         for filename in videoChunks:
-            chunkPath = os.path.join(output_folder, filename)
-            chunkKey = os.path.join(data, filename)
-            s3.putVideo('chunked_videos'+chunkKey, chunkPath)
+            chunkPath = os.path.join(output_folder.name, filename)
+            s3.putVideo('chunked_videos/'+data+'/chunks/'+filename, chunkPath)
 
-        linker_file = os.path.join(output_folder, "linker.txt")
-        linker_key = os.path.join(data, "linker.txt")
-        s3.putVideo('chunked_videos'+linker_key, linker_file)
+        linker_file = os.path.join(output_folder.name, "playlist.m3u8")
+        linker_key = os.path.join(data, "playlist.m3u8")
+        s3.putVideo('chunked_videos/'+linker_key, linker_file)
 
         redisDB.publish(config.REDIS_PUSH_QUEUE_NAME, data)
+        output_folder.cleanup()
         print("Message processed")
 
 

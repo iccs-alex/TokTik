@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "vue-hls-video-player": "^1.0.1"
+  }
+}
