@@ -8,7 +8,7 @@ sys.stderr = sys.stdout
 
 def convert_to_mp4(video_bytes):
     # Create temporary files for input and output
-    with tempfile.NamedTemporaryFile(delete=False, suffix=".mp4") as input_temp_file:
+    with tempfile.NamedTemporaryFile(delete=False) as input_temp_file:
         input_temp_file.write(video_bytes)
         input_temp_file_name = input_temp_file.name
 
