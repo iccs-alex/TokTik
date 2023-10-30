@@ -33,6 +33,7 @@ def main():
     pubsub = redisDB.pubsub()
     pubsub.subscribe(config.REDIS_LISTEN_QUEUE_NAME)
     for message in pubsub.listen():
+        redisDB.publish("backend", "having thumbnail extracted")
         channel = message['channel']
         data = message['data']
         if type(data) is not str:

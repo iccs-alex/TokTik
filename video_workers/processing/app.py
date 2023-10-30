@@ -30,6 +30,7 @@ def main():
     pubsub.subscribe(config.REDIS_LISTEN_QUEUE_NAME)
     messages = []
     for message in pubsub.listen():
+        redisDB.publish("backend", "processing")
         channel = message['channel']
         data = message['data']
         if type(data) is not str:
