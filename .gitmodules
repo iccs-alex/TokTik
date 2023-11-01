@@ -7,3 +7,6 @@
 [submodule "frontend/codebase"]
 	path = frontend/codebase
 	url = git@github.com:iccs-alex/TokTik_Frontend.git
+[submodule "TokTik_Workers"]
+	path = TokTik_Workers
+	url = https://github.com/iccs-alex/TokTik_Workers
