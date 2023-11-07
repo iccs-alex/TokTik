@@ -2,8 +2,7 @@
 FROM node:16 as build
 RUN mkdir /app
 WORKDIR /app
-COPY ./codebase .
-RUN --mount=type=cache,target=/var/cache/yarn yarn
+COPY codebase .
 RUN yarn run build
 
 # Production stage
