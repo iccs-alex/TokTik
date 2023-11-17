@@ -34,11 +34,11 @@ You need to have the traefik ingress controller running, the easiest way is to u
     helm repo update
 
     helm install traefik traefik/traefik
-```
+  ```
 
 Finally, get the K8S cluster up and running with the following command:
-```
+  ```
     kubectl apply -R -f k8s
-```
+  ```
 
 Now, just open up a browser window and type 'localhost' as the URL (use '127.0.0.1' if there are issues).
