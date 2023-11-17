@@ -1,0 +1,25 @@
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: toktik-traefik-routes
+spec:
+  entryPoints:
+    - web
+  routes:
+    - match: PathPrefix(`/api`)
+      kind: Rule
+      services:
+        - name: toktik-backend-service
+          port: 8080
+    - match: PathPrefix(`/socket.io/`)
+      kind: Rule
+      services:
+        - name: toktik-socketio-service
+          port: 3000
+      middlewares:
+        - name: websocket
+    - match: PathPrefix(`/`)
+      kind: Rule
+      services:
+        - name: toktik-frontend-service
+          port: 80

@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: toktik-socketio-deployment
+  name: toktik-socketio-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: toktik-socketio-deployment
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: toktik-socketio-deployment
+    spec:
+      containers:
+      - image: toktik-socketio:v1
+        imagePullPolicy: Never
+        name: toktik-socketio
+        ports:
+        - containerPort: 3000
+        resources: {}
+status: {}

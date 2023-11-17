@@ -1,6 +1,3 @@
-[submodule "backend/TokTik_Backend"]
-	path = backend/TokTik_Backend
-	url = git@github.com:iccs-alex/TokTik_Backend.git
 [submodule "backend/codebase"]
 	path = backend/codebase
 	url = git@github.com:iccs-alex/TokTik_Backend.git
@@ -10,3 +7,6 @@
 [submodule "TokTik_Workers"]
 	path = TokTik_Workers
 	url = https://github.com/iccs-alex/TokTik_Workers
+[submodule "socketio"]
+	path = socketio
+	url = git@github.com:iccs-alex/TokTik_SocketIO.git
