@@ -3,8 +3,11 @@
 I have 4 submodules in my repo:
 
 The frontend repo's relative path is ./frontend/codebase
+
 The backend repo's relative path is ./backend/codebase
+
 The repo for the video workers has the relative path ./TokTik_Workers
+
 The socketIO server repo's relative path is ./socketio
 
 
@@ -12,6 +15,7 @@ First, when you clone the project, make sure to clone the submodules as well.
 
 
 Then, you need to build some images and start the K8S cluster.
+
 
 Run the following docker build commands from the root of the project:
   ```
@@ -27,6 +31,7 @@ Run the following docker build commands from the root of the project:
 
     docker build -t toktik-thumbnail:v1 TokTik_Workers/thumbnail
   ```
+
 You need to have the traefik ingress controller running, the easiest way is to use helm by running the following commands:
   ```
     helm repo add traefik https://traefik.github.io/charts
