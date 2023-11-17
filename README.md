@@ -31,6 +31,7 @@ Run the following docker build commands from the root of the project:
 
     docker build -t toktik-thumbnail:v1 TokTik_Workers/thumbnail
   ```
+
 <br/>
 You need to have the traefik ingress controller running, the easiest way is to use helm by running the following commands:
   ```
@@ -40,10 +41,12 @@ You need to have the traefik ingress controller running, the easiest way is to u
 
     helm install traefik traefik/traefik
   ```
+
 <br/>
 Finally, get the K8S cluster up and running with the following command:
   ```
     kubectl apply -R -f k8s
   ```
+
 <br/>
 Now, just open up a browser window and type 'localhost' as the URL (use '127.0.0.1' if there are issues).
