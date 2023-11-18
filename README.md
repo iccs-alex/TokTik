@@ -34,4 +34,4 @@
 
 <br/><br/>
 
-**Now**, just open up a browser window and type *'localhost'* as the URL (use *'127.0.0.1'* if there are issues).
+**Now**, just open up a browser window and type 'localhost' as the URL (use '127.0.0.1' if there are issues).
