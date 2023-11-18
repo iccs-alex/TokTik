@@ -29,11 +29,11 @@ jobs:
       run: echo "::set-output name=sha_short::$(git rev-parse --short HEAD)"
     - name: Build the Docker image
       run: |
-        cd toktik_workers/conversion && \
+        cd toktik_workers/thumbnail && \
         docker build . --file Dockerfile \
-        --tag ghcr.io/${{ env.BASE_IMG_NAME }}/toktik-conversion:${{ steps.vars.outputs.sha_short }} \
-        --tag ghcr.io/${{ env.BASE_IMG_NAME }}/toktik-conversion:latest
+        --tag ghcr.io/${{ env.BASE_IMG_NAME }}/toktik-thumbnail:${{ steps.vars.outputs.sha_short }} \
+        --tag ghcr.io/${{ env.BASE_IMG_NAME }}/toktik-thumbnail:latest
     - name: Publish the images
       run: | 
-        docker push ghcr.io/${{ env.BASE_IMG_NAME }}/toktik-conversion:${{ steps.vars.outputs.sha_short }}
-        docker push ghcr.io/${{ env.BASE_IMG_NAME }}/toktik-conversion:latest
+        docker push ghcr.io/${{ env.BASE_IMG_NAME }}/toktik-thumbnail:${{ steps.vars.outputs.sha_short }}
+        docker push ghcr.io/${{ env.BASE_IMG_NAME }}/toktik-thumbnail:latest
