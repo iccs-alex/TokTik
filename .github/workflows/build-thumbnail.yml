@@ -1,4 +1,4 @@
-name: Build Toktik Conversion Image
+name: Build Toktik Thumbnail Image
 
 on:
   push:
