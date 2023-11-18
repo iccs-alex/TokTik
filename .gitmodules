@@ -1,12 +1,12 @@
 [submodule "backend/codebase"]
 	path = backend/codebase
-	url = git@github.com:iccs-alex/TokTik_Backend.git
+	url = git@github.com:iccs-alex/toktik_backend.git
 [submodule "frontend/codebase"]
 	path = frontend/codebase
-	url = git@github.com:iccs-alex/TokTik_Frontend.git
-[submodule "TokTik_Workers"]
-	path = TokTik_Workers
-	url = https://github.com/iccs-alex/TokTik_Workers
+	url = git@github.com:iccs-alex/toktik_frontend.git
+[submodule "toktik_workers"]
+	path = toktik_workers
+    url = https://github.com/iccs-alex/toktik_workers.git
 [submodule "socketio_server/codebase"]
 	path = socketio_server/codebase
-	url = git@github.com:iccs-alex/TokTik_SocketIO.git
+	url = git@github.com:iccs-alex/toktik_socketio.git
