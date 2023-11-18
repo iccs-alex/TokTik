@@ -7,6 +7,6 @@
 [submodule "TokTik_Workers"]
 	path = TokTik_Workers
 	url = https://github.com/iccs-alex/TokTik_Workers
-[submodule "socketio"]
-	path = socketio
+[submodule "socketio_server/codebase"]
+	path = socketio_server/codebase
 	url = git@github.com:iccs-alex/TokTik_SocketIO.git
