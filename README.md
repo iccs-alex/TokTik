@@ -18,13 +18,15 @@ Then, you need to build some images and start the K8S cluster.
 
 <br/>
 
-Run the following docker build commands from the root of the project:
+Run the following docker build commands from the root of the project (will take about 3 minutes):
   ```
+    cd frontend/codebase && yarn && cd ../..
+
     docker build -t toktik-frontend:v1 frontend
 
     docker build -t toktik-backend:v1 backend
 
-    docker build -t toktik-socketio:v1 socketio
+    docker build -t toktik-socketio:v1 socketio_server
 
     docker build -t toktik-conversion:v1 TokTik_Workers/conversion
 
