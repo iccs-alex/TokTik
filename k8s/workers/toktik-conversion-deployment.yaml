@@ -18,8 +18,8 @@ spec:
         app: toktik-conversion-deployment
     spec:
       containers:
-      - image: toktik-conversion:v1
-        imagePullPolicy: Never
+      - image: ghcr.io/iccs-alex/toktik/toktik-conversion:latest        
+        imagePullPolicy: Always
         name: toktik-conversion
         ports:
         - containerPort: 5000
@@ -35,4 +35,6 @@ spec:
             secretKeyRef:
               name: s3-key-secret
               key: s3-key-secret
+      imagePullSecrets:
+        - name: ghcr-secret
 status: {}

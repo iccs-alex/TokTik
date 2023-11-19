@@ -18,10 +18,12 @@ spec:
         app: toktik-frontend-deployment
     spec:
       containers:
-      - image: toktik-frontend:v1
-        imagePullPolicy: Never
+      - image: ghcr.io/iccs-alex/toktik/toktik-frontend:latest
+        imagePullPolicy: Always
         name: toktik-frontend
         ports:
         - containerPort: 80
         resources: {}
+      imagePullSecrets:
+        - name: ghcr-secret
 status: {}

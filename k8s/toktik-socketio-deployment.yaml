@@ -18,10 +18,12 @@ spec:
         app: toktik-socketio-deployment
     spec:
       containers:
-      - image: toktik-socketio:v1
-        imagePullPolicy: Never
+      - image: ghcr.io/iccs-alex/toktik/toktik-socketio:latest
+        imagePullPolicy: Always
         name: toktik-socketio
         ports:
         - containerPort: 3000
         resources: {}
+      imagePullSecrets:
+        - name: ghcr-secret
 status: {}

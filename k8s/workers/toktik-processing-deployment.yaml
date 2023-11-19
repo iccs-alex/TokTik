@@ -18,8 +18,8 @@ spec:
         app: toktik-processing-deployment
     spec:
       containers:
-      - image: toktik-processing:v1
-        imagePullPolicy: Never
+      - image: ghcr.io/iccs-alex/toktik/toktik-processing:latest
+        imagePullPolicy: Always
         name: toktik-processing
         ports:
         - containerPort: 5001
@@ -35,4 +35,6 @@ spec:
             secretKeyRef:
               name: s3-key-secret
               key: s3-key-secret
+      imagePullSecrets:
+        - name: ghcr-secret
 status: {}

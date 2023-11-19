@@ -18,8 +18,8 @@ spec:
         app: toktik-thumbnail-deployment
     spec:
       containers:
-      - image: toktik-thumbnail:v1
-        imagePullPolicy: Never
+      - image: ghcr.io/iccs-alex/toktik/toktik-thumbnail:latest
+        imagePullPolicy: Always
         name: toktik-thumbnail
         ports:
         - containerPort: 5002
@@ -35,4 +35,6 @@ spec:
             secretKeyRef:
               name: s3-key-secret
               key: s3-key-secret
+      imagePullSecrets:
+        - name: ghcr-secret
 status: {}
