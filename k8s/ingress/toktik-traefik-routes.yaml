@@ -23,3 +23,8 @@ spec:
       services:
         - name: toktik-frontend-service
           port: 80
+    - match: Host(`toktik.com`)
+      kind: Rule
+      services:
+        - name: toktik-frontend-service
+          port: 80

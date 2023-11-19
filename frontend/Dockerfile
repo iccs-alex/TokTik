@@ -7,7 +7,7 @@ RUN yarn run build
 
 # Production stage
 FROM nginx:1.21-alpine
+ADD ./default.conf /etc/nginx/conf.d/
 WORKDIR /usr/share/nginx/html/
 RUN rm -r ./*
-#ADD ./default.conf /etc/nginx/
 COPY --from=build /app/dist .
